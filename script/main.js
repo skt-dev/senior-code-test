@@ -1,13 +1,13 @@
 
 const collections_url = "./mock/collections.json";
 const articles_urls = "./mock/articles.json";
-
+var collectionsData;
 async function getData() {
     // Fetch API Data
     const articlesResult = fetch(`${collections_url}`, { method: 'get' }) // FIRST API CALL
         .then(response => response.json()) // pass the response as promise to next then block
         .then(data => {                    // applpy logic to fetch collection type landing
-            const collectionsData = data.Collections.find(o => o.collectiontype === 'landing')
+            collectionsData = data.Collections.find(o => o.collectiontype === 'landing')
             const collectionId = collectionsData.collectionid;
             return fetch(`${articles_urls}#${collectionId}`); // SECOND API CALL to fetch articles and return a promise
         })
@@ -22,8 +22,8 @@ async function getData() {
         })
 
     articlesResult.then(ret => {
-        const data = ret.collection02;  // apply logic to fetch articles of collectionId
-        show(data);
+        const data = ret[collectionsData.collectionid]; // Get articles of elected collectionid
+        show(data);                                     // render data in UI
     });
 }
 
@@ -34,6 +34,7 @@ function hideloader() { // hide loader text container
 }
 
 function show(articlesData) {
+    // Process article data and render to UI.
     const articles = articlesData.map((article, index) => {
         return `<div class="article-wrapper article-col article-${ index }-wrapper">
                         <div class="article-content ${ article.intro ? '' : 'article-empty-content' }">
