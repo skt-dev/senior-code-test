@@ -1,0 +1,242 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  margin: 10px;
+  min-width: 320px;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 0 10px;
+}
+
+.caps-on {
+  text-transform: uppercase;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 20px;
+}
+
+.icon-clock {
+  padding-left: 14px;
+  width: 14px;
+  height: 14px;
+
+  &:before {
+    content: '';
+    background: url('/img/icons/clock.png');
+    background-size: cover;
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    margin-left: -14px;
+  }
+}
+
+.icon-speach-bubble {
+  padding-left: 18px;
+  width: 18px;
+  height: 14px;
+
+  &:before {
+    content: '';
+    background: url('/img/icons/speech-bubble.png');
+    background-size: cover;
+    position: absolute;
+    width: 18px;
+    height: 14px;
+    margin-left: -18px;
+  }
+}
+
+.icon-title {
+  padding-left: 20px;
+
+  &:before {
+    content: '';
+    background: url('/img/icons/title.png');
+    background-size: cover;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin-left: -20px;
+  }
+}
+
+#body_wrapper {
+  .main-content-wrapper {
+    float: left;
+    width: 75%;
+    margin-right: 10px;
+
+    #header_wrapper {
+      min-height: 100px;
+      background-color: #656464;
+      color: white;
+      font-size: 32px;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    .content-wrapper {
+      .heading {
+        padding: 6px 0;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .article-0-wrapper {
+        // for first article only
+        min-height: 600px;
+      }
+
+      .article-col {
+        width: 49%;
+        padding: 5px 0 5px 10px;
+        float: left;
+        position: relative;
+
+        img {
+          width: 100%;
+        }
+
+        .intro-text.caps-on {
+          font-weight: bold;
+
+          &.odd-intro {
+            color: #F6423D;
+          }
+
+          &.even-intro {
+            color: #1973E6;
+          }
+        }
+
+        .article-empty-content {
+          // min-height: 100px;
+          overflow: auto;
+
+          .heading {
+            font-size: 22px;
+          }
+
+          .article-media {
+            float: right;
+            width: 25%;
+          }
+
+          .article-text {
+            float: right;
+            width: 75%;
+          }
+        }
+      }
+
+      .main-text {
+        font-size: 14px;
+      }
+
+      .article-footer {
+        font-size: 12px;
+        padding-top: 10px;
+        padding-bottom: 5px;
+        border-bottom: 2px solid #e0e0e0;
+
+        .published-timer {
+          margin: 0 2px;
+        }
+
+        .icon-speach-bubble {
+          padding-left: 18px;
+        }
+      }
+    }
+  }
+
+  .ads-side-bar-wrapper {
+    float: left;
+    width: 24%;
+    padding-left: 20px;
+    height: 600px;
+    background-color: #656464;
+    color: white;
+    font-size: 32px;
+    padding: 10px;
+    margin: 10px 0;
+  }
+}
+
+
+@media screen and (max-width: 1024px) {
+  // 1024 or less
+
+  #body_wrapper {
+    .main-content-wrapper {
+      float: none;
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  // Tab and mobile
+
+  #body_wrapper {
+    .main-content-wrapper {
+      float: none;
+      width: 100%;
+      margin-right: 0;
+
+      .content-wrapper {
+        .article-col {
+          width: 100%;
+          padding: 5px 0 5px 0;
+          float: none;
+        }
+      }
+    }
+
+    .ads-side-bar-wrapper {
+      width: 100%;
+      padding: 0;
+    }
+  }
+
+  .content-wrapper {
+    .article-col {
+      float: none;
+    }
+  }
+}
+
+// @media screen and (max-width: 600px) {  // Mobile view
+
+//   #body_wrapper {
+//     .main-content-wrapper {
+//       float: none;
+//       width: 100%;
+//       margin-right: 0;
+//       .content-wrapper {
+//         .article-col {
+//           width: 100%;
+//           padding: 5px 0 5px 0;
+//           float: none;
+//         }
+//       }
+//     }
+//     .ads-side-bar-wrapper {
+//       width: 100%;
+//       padding: 0;
+//     }      
+//   }
+// }

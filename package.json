@@ -1,0 +1,15 @@
+{
+  "name": "testapp",
+  "version": "1.0.0",
+  "description": "Test app development",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass --watch style -o style"
+  },
+  "author": "sreejith",
+  "license": "ISC",
+  "dependencies": {
+    "node-scss": "^7.0.3"
+  }
+}
