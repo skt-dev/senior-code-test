@@ -63,7 +63,7 @@ body {
 
 #body_wrapper .main-content-wrapper {
   float: left;
-  width: 75%;
+  width: 66%;
   margin-right: 10px; }
 
 #body_wrapper .main-content-wrapper #header_wrapper {
@@ -131,9 +131,9 @@ body {
 
 #body_wrapper .ads-side-bar-wrapper {
   float: left;
-  width: 24%;
+  width: 32%;
   padding-left: 20px;
-  height: 600px;
+  min-height: 600px;
   background-color: #656464;
   color: white;
   font-size: 32px;
