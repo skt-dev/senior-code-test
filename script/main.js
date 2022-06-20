@@ -9,7 +9,6 @@ async function getData() {
         .then(data => {                    // applpy logic to fetch collection type landing
             const collectionsData = data.Collections.find(o => o.collectiontype === 'landing')
             const collectionId = collectionsData.collectionid;
-            console.log(collectionId, '\n');
             return fetch(`${articles_urls}#${collectionId}`); // SECOND API CALL to fetch articles and return a promise
         })
         .then(function (response) {
@@ -24,7 +23,6 @@ async function getData() {
 
     articlesResult.then(ret => {
         const data = ret.collection02;  // apply logic to fetch articles of collectionId
-        console.log(data);
         show(data);
     });
 }
