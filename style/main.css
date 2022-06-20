@@ -28,7 +28,7 @@ body {
 
 .icon-clock:before {
   content: '';
-  background: url("/img/icons/clock.png");
+  background: url("../img/icons/clock.png");
   background-size: cover;
   position: absolute;
   width: 14px;
@@ -42,7 +42,7 @@ body {
 
 .icon-speach-bubble:before {
   content: '';
-  background: url("/img/icons/speech-bubble.png");
+  background: url("../img/icons/speech-bubble.png");
   background-size: cover;
   position: absolute;
   width: 18px;
@@ -54,7 +54,7 @@ body {
 
 .icon-title:before {
   content: '';
-  background: url("/img/icons/title.png");
+  background: url("../img/icons/title.png");
   background-size: cover;
   position: absolute;
   width: 20px;
