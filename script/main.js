@@ -62,7 +62,7 @@ const show = (articlesData) => {
         articles = articlesData.map((article, index) => {
             return `<div class="article-wrapper article-col article-${index}-wrapper">
                         <div class="article-content ${article.content ? '' : 'article-empty-content'}">` +
-                                generateTag({ tag: 'div', classList: 'article-media', innerContent: generateTag({ tag: 'img', src: article.imageURL }) }) + `
+                            generateTag({ tag: 'div', classList: 'article-media', innerContent: generateTag({ tag: 'img', src: article.imageURL }) }) + `
                             <div class="article-text">
                                 <div class="heading">`+
                                     generateTag({ tag: 'span', classList: 'icon icon-title' }) + `
@@ -79,7 +79,7 @@ const show = (articlesData) => {
                             generateTag({ tag: 'span', classList: 'published-timer', innerContent: article.published + 'h' }) +
                             generateTag({ tag: 'span', classList: 'icon icon-speach-bubble' }) + `
                         </div>`+
-                            generateTag({ tag: 'div', classList: 'divider-line' }) + `
+                        generateTag({ tag: 'div', classList: 'divider-line' }) + `
                     </div>`
         }).join('');
     }
