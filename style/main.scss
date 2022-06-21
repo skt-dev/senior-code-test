@@ -6,7 +6,7 @@
 
 body {
   font-family: $font_family;
-  margin: 10px;
+  margin: $primary_margin;
   min-width: 320px;
 }
 
@@ -76,8 +76,8 @@ body {
 
 #loading {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: $full_width;
+  height: $full_width;
   background: white;
   text-align: center;
   padding-top: 25%;
@@ -87,15 +87,15 @@ body {
   .main-content-wrapper {
     float: left;
     width: $left_column_width;
-    margin-right: 10px;
+    margin-right: $primary_margin;
 
     #header_wrapper {
       min-height: 100px;
       background-color: #656464;
       color: white;
       font-size: $font_size_section_header;
-      padding: 10px;
-      margin: 10px 0;
+      padding: $primary_padding;
+      margin: $primary_margin 0;
     }
 
     .content-wrapper {
@@ -118,12 +118,12 @@ body {
 
       .article-col {
         width: 49%;
-        padding: 5px 0 5px 10px;
+        padding: $secondary_padding 0 $secondary_padding $primary_padding;
         float: left;
         position: relative;
 
         img {
-          width: 100%;
+          width: $full_width;
         }
 
         .intro-text.caps-on {
@@ -165,8 +165,8 @@ body {
 
       .article-footer {
         font-size: 12px;
-        padding-top: 10px;
-        padding-bottom: 5px;
+        padding-top: $primary_padding;
+        padding-bottom: $secondary_padding;
         border-bottom: 2px solid #e0e0e0;
 
         .published-timer {
@@ -188,8 +188,8 @@ body {
     background-color: #656464;
     color: white;
     font-size: $font_size_section_header;
-    padding: 10px;
-    margin: 10px 0;
+    padding: $primary_padding;
+    margin: $primary_margin 0;
   }
 }
 
@@ -200,7 +200,7 @@ body {
   #body_wrapper {
     .main-content-wrapper {
       float: none;
-      width: 100%;
+      width: $full_width;
       margin-right: 0;
     }
   }
@@ -212,20 +212,20 @@ body {
   #body_wrapper {
     .main-content-wrapper {
       float: none;
-      width: 100%;
+      width: $full_width;
       margin-right: 0;
 
       .content-wrapper {
         .article-col {
-          width: 100%;
-          padding: 5px 0 5px 0;
+          width: $full_width;
+          padding: $secondary_padding 0;
           float: none;
         }
       }
     }
 
     .ads-side-bar-wrapper {
-      width: 100%;
+      width: $full_width;
       padding: 0;
     }
   }
