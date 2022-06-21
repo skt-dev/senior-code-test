@@ -1,51 +1,58 @@
 
-const collections_url = "./mock/collections.json";
-const articles_urls = "./mock/articles.json";
-let collectionsData = "";
+const collectionsUrl        = "./mock/collections.json";
+const articlesUrls          = "./mock/articles.json";
+const collectionTypeToLoad  = 'landing';
+let collectionsData         = "";
+
 const getCollections = () => {
     // Fetch Collections Data
-    return fetch(`${collections_url}`, { method: 'get' }) // FIRST API CALL
+    return fetch(`${collectionsUrl}`, { method: 'get' }) // FIRST API CALL
         .then(response => {
-            if (response.ok) {          // returns true if the response returned
-                return response.json(); // pass the response as promise
-            } else {                    // Failed
-                setUserMessage("Some error occured");
-            }
-        }) // pass the response as promise
-        .catch(err => {
-            console.error('Request failed', err);
-        })
-}
-const getArticles = (collectionId) => {
-    // Fetch Articles Data
-    return fetch(`${articles_urls}#${collectionId}`) // SECOND API CALL to fetch articles and return a promise
-        .then((response) => {
-            if (response.ok) {          // returns true if the response returned
-                return response.json(); // pass the response as promise
-            } else {                    // Failed
-                setUserMessage("Some error occured");
-            }
+            return handleApiResponse(response);
         })
         .catch(err => {
             console.error('Request failed', err);
         })
 }
 
+const getArticles = (collectionId) => {
+    // Fetch Articles Data
+    return fetch(`${articlesUrls}#${collectionId}`) // SECOND API CALL to fetch articles and return a promise
+        .then((response) => {
+            return handleApiResponse(response);
+        })
+        .catch(err => {
+            console.error('Request failed', err);
+        })
+}
+
+const handleApiResponse = (response) => {
+    if (response.ok) {          // returns true if the response returned
+        return response.json(); // pass the response as promise
+    } else {                    // Failed
+        setUserMessage("Some error occured");
+    }
+}
+
 const collectionsPromise = getCollections(); // Fetch data
 collectionsPromise.then(data => {                    // applpy logic to fetch collection type landing
     if (data && data.Collections) {
-        collectionsData = data.Collections.find(o => o.collectiontype === 'landing');
-        const collectionId = collectionsData.collectionid;
-        const articlesPromise = getArticles(collectionId); // Fetch data
-        articlesPromise.then(ret => {
-            if (ret) {
-                const data = (collectionsData && collectionsData.collectionid) ? ret[collectionsData.collectionid] : ''; // Get articles of elected collectionid
-                show(data);     // render data in UI
-                hideloader();   // hide loader text container
-            } else {
-                setUserMessage("Some error occured");
-            }
-        });
+        collectionsData = data.Collections.find(o => o.collectiontype === collectionTypeToLoad);
+        if (collectionsData) {
+            const collectionId = collectionsData.collectionid;
+            const articlesPromise = getArticles(collectionId); // Fetch data
+            articlesPromise.then(result => {
+                if (result) {
+                    const data = (collectionsData && collectionsData.collectionid) ? result[collectionsData.collectionid] : ''; // Get articles of elected collectionid
+                    show(data);     // render data in UI
+                    hideloader();   // hide loader text container
+                } else {
+                    setUserMessage("Some error occured");
+                }
+            });
+        } else {
+            setUserMessage("No Data available for"+ collectionTypeToLoad);
+        }
     }
 });
 
@@ -83,7 +90,10 @@ const show = (articlesData) => {
                     </div>`
         }).join('');
     }
-    document.getElementById("content_wrapper").innerHTML = articles;    // append data to content wrapper
+    
+    if (document.getElementById("content_wrapper")) {
+        document.getElementById("content_wrapper").innerHTML = articles;    // append data to content wrapper
+    }
 };
 
 const generateTag = ({ tag = '', classList = '', innerContent = '', src = '' }) => {
