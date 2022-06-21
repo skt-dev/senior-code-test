@@ -72,6 +72,15 @@ body {
   }
 }
 
+#loading {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: white;
+  text-align: center;
+  padding-top: 25%;
+}
+
 #body_wrapper {
   .main-content-wrapper {
     float: left;
@@ -112,11 +121,11 @@ body {
         .intro-text.caps-on {
           font-weight: bold;
 
-          &.odd-intro {
+          &.red-intro {
             color: #F6423D;
           }
 
-          &.even-intro {
+          &.blue-intro {
             color: #1973E6;
           }
         }

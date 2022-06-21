@@ -61,6 +61,14 @@ body {
   height: 20px;
   margin-left: -20px; }
 
+#loading {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: white;
+  text-align: center;
+  padding-top: 25%; }
+
 #body_wrapper .main-content-wrapper {
   float: left;
   width: 66%;
@@ -94,10 +102,10 @@ body {
 #body_wrapper .main-content-wrapper .content-wrapper .article-col .intro-text.caps-on {
   font-weight: bold; }
 
-#body_wrapper .main-content-wrapper .content-wrapper .article-col .intro-text.caps-on.odd-intro {
+#body_wrapper .main-content-wrapper .content-wrapper .article-col .intro-text.caps-on.red-intro {
   color: #F6423D; }
 
-#body_wrapper .main-content-wrapper .content-wrapper .article-col .intro-text.caps-on.even-intro {
+#body_wrapper .main-content-wrapper .content-wrapper .article-col .intro-text.caps-on.blue-intro {
   color: #1973E6; }
 
 #body_wrapper .main-content-wrapper .content-wrapper .article-col .article-empty-content {
