@@ -2,8 +2,7 @@
 const collections_url = "./mock/collections.json";
 const articles_urls = "./mock/articles.json";
 let collectionsData = "";
-
-const getCollections = async () => {
+const getCollections = () => {
     // Fetch Collections Data
     return fetch(`${collections_url}`, { method: 'get' }) // FIRST API CALL
         .then(response => {
@@ -17,7 +16,7 @@ const getCollections = async () => {
             console.error('Request failed', err);
         })
 }
-const getArticles = async (collectionId) => {
+const getArticles = (collectionId) => {
     // Fetch Articles Data
     return fetch(`${articles_urls}#${collectionId}`) // SECOND API CALL to fetch articles and return a promise
         .then((response) => {
@@ -57,34 +56,47 @@ const setUserMessage = (message) => document.getElementById('loading').innerHTML
 
 const show = (articlesData) => {
     // Process article data and render to UI.
-    let article = `<div class="article-wrapper article-col article-0-wrapper">No Data</div>`
+    let articles = `<div class="article-wrapper article-col article-0-wrapper">No Data</div>`;
     if (articlesData) {
+        articlesData.sort((a, b) => a.index - b.index); // to order articles based on the index value given
         articles = articlesData.map((article, index) => {
             return `<div class="article-wrapper article-col article-${index}-wrapper">
-                            <div class="article-content ${article.content ? '' : 'article-empty-content'}">
-                                <div class="article-media">
-                                    <img src="${article.imageURL}" />
+                        <div class="article-content ${article.content ? '' : 'article-empty-content'}">` +
+                                generateTag({ tag: 'div', classList: 'article-media', innerContent: generateTag({ tag: 'img', src: article.imageURL }) }) + `
+                            <div class="article-text">
+                                <div class="heading">`+
+                                    generateTag({ tag: 'span', classList: 'icon icon-title' }) + `
+                                    ${article.title}
                                 </div>
-                                <div class="article-text">
-                                    <div class="heading">
-                                        <span class="publiched-clock icon icon-title"></span>
-                                        ${article.title}
-                                    </div>
-                                    <div class="content">
-                                    <span class="intro-text caps-on ${article.intro ? (index == 0 ? 'red-intro' : 'blue-intro') : ''}"">${article.intro}</span>
-                                    <span class="main-text">${article.content}</span>
-                                    </div>
+                                <div class="content">`+
+                                    generateTag({ tag: 'span', classList: 'intro-text caps-on ' + (article.intro ? (index == 0 ? 'red-intro' : 'blue-intro') : 'empty'), innerContent: article.intro }) +
+                                    generateTag({ tag: 'span', classList: 'main-text', innerContent: article.content }) + `
                                 </div>
                             </div>
-                            <div class="article-footer">
-                                <span class="publiched-clock icon icon-clock"></span>
-                                <span class="published-timer">${article.published}h</span>
-                                <span class="published-comments icon icon-speach-bubble"></cpan>
-                            </div>
-                            <div class="divider-line"></div>
-                            </div>`
+                        </div>
+                        <div class="article-footer">`+
+                            generateTag({ tag: 'span', classList: 'icon icon-clock' }) +
+                            generateTag({ tag: 'span', classList: 'published-timer', innerContent: article.published + 'h' }) +
+                            generateTag({ tag: 'span', classList: 'icon icon-speach-bubble' }) + `
+                        </div>`+
+                            generateTag({ tag: 'div', classList: 'divider-line' }) + `
+                    </div>`
         }).join('');
     }
-
     document.getElementById("content_wrapper").innerHTML = articles;    // append data to content wrapper
+};
+
+const generateTag = ({ tag = '', classList = '', innerContent = '', src = '' }) => {
+    // generic method which will generata html element and return as string
+    const element = document.createElement(tag);
+    if (classList) {
+        element.classList.add(...classList.split(' '));
+    }
+    if (innerContent) {
+        element.innerHTML = innerContent;
+    }
+    if (src) {
+        element.src = src;
+    }
+    return element.outerHTML;
 }
