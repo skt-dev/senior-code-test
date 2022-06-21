@@ -69,7 +69,7 @@ const show = (articlesData) => {
                                     ${article.title}
                                 </div>
                                 <div class="content">`+
-                                    generateTag({ tag: 'span', classList: 'intro-text caps-on ' + (article.intro ? (index == 0 ? 'red-intro' : 'blue-intro') : 'empty'), innerContent: article.intro }) +
+                                    generateTag({ tag: 'span', classList: 'intro-text caps-on ' + (article.intro ? (index == 0 ? 'red-intro' : 'blue-intro') : 'empty'), innerContent: article.intro + `&nbsp;` }) +
                                     generateTag({ tag: 'span', classList: 'main-text', innerContent: article.content }) + `
                                 </div>
                             </div>
