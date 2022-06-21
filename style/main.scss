@@ -1,16 +1,18 @@
+@import 'variables';
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: Arial;
+  font-family: $font_family;
   margin: 10px;
   min-width: 320px;
 }
 
 .column {
   float: left;
-  width: 33.33%;
+  width: $left_column_width;
   padding: 0 10px;
 }
 
@@ -84,14 +86,14 @@ body {
 #body_wrapper {
   .main-content-wrapper {
     float: left;
-    width: 66%;
+    width: $left_column_width;
     margin-right: 10px;
 
     #header_wrapper {
       min-height: 100px;
       background-color: #656464;
       color: white;
-      font-size: 32px;
+      font-size: $font_size_section_header;
       padding: 10px;
       margin: 10px 0;
     }
@@ -99,13 +101,19 @@ body {
     .content-wrapper {
       .heading {
         padding: 6px 0;
-        font-size: 24px;
+        font-size: $font_size_primary_article_title;
         font-weight: bold;
       }
 
       .article-0-wrapper {
         // for first article only
         min-height: 600px;
+      }
+      .article-1-wrapper {
+        // for 2nd article only
+        .heading {
+          font-size: $font_size_secondary_article_title;
+        }
       }
 
       .article-col {
@@ -122,11 +130,11 @@ body {
           font-weight: bold;
 
           &.red-intro {
-            color: #F6423D;
+            color: $color_red;
           }
 
           &.blue-intro {
-            color: #1973E6;
+            color: $color_blue;
           }
         }
 
@@ -135,7 +143,8 @@ body {
           overflow: auto;
 
           .heading {
-            font-size: 22px;
+            color: $color_grey;
+            font-size: $font_size_ternary_article_title;
           }
 
           .article-media {
@@ -173,12 +182,12 @@ body {
 
   .ads-side-bar-wrapper {
     float: left;
-    width: 32%;
+    width: $right_column_width;
     padding-left: 20px;
     min-height: 600px;
     background-color: #656464;
     color: white;
-    font-size: 32px;
+    font-size: $font_size_section_header;
     padding: 10px;
     margin: 10px 0;
   }

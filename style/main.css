@@ -2,13 +2,13 @@
   box-sizing: border-box; }
 
 body {
-  font-family: Arial;
+  font-family: "Arial";
   margin: 10px;
   min-width: 320px; }
 
 .column {
   float: left;
-  width: 33.33%;
+  width: 66%;
   padding: 0 10px; }
 
 .caps-on {
@@ -90,6 +90,9 @@ body {
 #body_wrapper .main-content-wrapper .content-wrapper .article-0-wrapper {
   min-height: 600px; }
 
+#body_wrapper .main-content-wrapper .content-wrapper .article-1-wrapper .heading {
+  font-size: 22px; }
+
 #body_wrapper .main-content-wrapper .content-wrapper .article-col {
   width: 49%;
   padding: 5px 0 5px 10px;
@@ -112,7 +115,8 @@ body {
   overflow: auto; }
 
 #body_wrapper .main-content-wrapper .content-wrapper .article-col .article-empty-content .heading {
-  font-size: 22px; }
+  color: grey;
+  font-size: 20px; }
 
 #body_wrapper .main-content-wrapper .content-wrapper .article-col .article-empty-content .article-media {
   float: right;
